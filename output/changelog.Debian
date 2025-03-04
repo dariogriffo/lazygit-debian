@@ -1,10 +1,6 @@
 lazygit (FULL_VERSION) DIST; urgency=low
 
-  fix: Properly support remote docker daemon over ssh by @rajiv-k in #511
-  fix lazygit breaking when having default context in config by @peauc in #552
-  Bump lots of dependencies for various improvements by @thaJeztah in #561
-    This fixed a bug I had where sometimes lazygit didn't realise it was in a folder with a docker compose file.
-  Add hint to what .DockerCompose is in documentation by @hauskens in #554
-  Use 'docker compose' by default by @jesseduffield in #563
-  go.mod: github.com/docker/docker, docker/cli v27.1.1 by @thaJeztah in #568 
+  - Custom commands submenus by @stefanhaller in #4324
+  - Refactor migrations to only marshall yaml twice by @ChrisMcD1 in #4318
+  
   
