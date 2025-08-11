@@ -1,15 +1,14 @@
 ARG DEBIAN_DIST=bookworm
-FROM debian:$DEBIAN_DIST
+FROM debian:bookworm
 
 ARG DEBIAN_DIST
 ARG lazygit_VERSION
 ARG BUILD_VERSION
 ARG FULL_VERSION
 
-RUN apt update && apt install -y wget
 RUN mkdir -p /output/usr/bin
 RUN mkdir -p /output/usr/share/doc/lazygit
-RUN cd /output/usr/bin && wget https://github.com/jesseduffield/lazygit/releases/download/v${lazygit_VERSION}/lazygit_${lazygit_VERSION}_Linux_x86_64.tar.gz && tar -xf lazygit_${lazygit_VERSION}_Linux_x86_64.tar.gz && rm -f lazygit_${lazygit_VERSION}_Linux_x86_64.tar.gz && rm -fRd LICENSE README.md 
+COPY lazygit /output/usr/bin/
 RUN mkdir -p /output/DEBIAN
 
 COPY output/DEBIAN/control /output/DEBIAN/

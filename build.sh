@@ -1,5 +1,8 @@
 lazygit_VERSION=$1
 BUILD_VERSION=$2
+
+wget https://github.com/jesseduffield/lazygit/releases/download/v${lazygit_VERSION}/lazygit_${lazygit_VERSION}_Linux_x86_64.tar.gz && tar -xf lazygit_${lazygit_VERSION}_Linux_x86_64.tar.gz && rm -f lazygit_${lazygit_VERSION}_Linux_x86_64.tar.gz && rm -fRd LICENSE README.md
+
 declare -a arr=("bookworm" "trixie" "forky" "sid")
 for i in "${arr[@]}"
 do
@@ -11,4 +14,5 @@ docker build . -t lazygit-$DEBIAN_DIST  --build-arg DEBIAN_DIST=$DEBIAN_DIST --b
   tar -xf ./lazygit_$FULL_VERSION.deb
 done
 
-
+rm -fRd lazygit
+  
