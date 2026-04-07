@@ -1,10 +1,11 @@
 ARG DEBIAN_DIST=bookworm
-FROM debian:bookworm
+FROM debian:$DEBIAN_DIST
 
 ARG DEBIAN_DIST
 ARG lazygit_VERSION
 ARG BUILD_VERSION
 ARG FULL_VERSION
+ARG ARCH
 
 RUN mkdir -p /output/usr/bin
 RUN mkdir -p /output/usr/share/doc/lazygit
@@ -21,5 +22,6 @@ RUN sed -i "s/FULL_VERSION/$FULL_VERSION/" /output/usr/share/doc/lazygit/changel
 RUN sed -i "s/DIST/$DEBIAN_DIST/" /output/DEBIAN/control
 RUN sed -i "s/lazygit_VERSION/$lazygit_VERSION/" /output/DEBIAN/control
 RUN sed -i "s/BUILD_VERSION/$BUILD_VERSION/" /output/DEBIAN/control
+RUN sed -i "s/ARCH/$ARCH/" /output/DEBIAN/control
 
 RUN dpkg-deb --build /output /lazygit_${FULL_VERSION}.deb

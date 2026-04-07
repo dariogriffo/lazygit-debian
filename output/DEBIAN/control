@@ -5,7 +5,7 @@ Maintainer: Dario Griffo <dariogriffo@gmail.com>
 Homepage: https://github.com/jesseduffield/lazygit
 Package: lazygit
 Version: lazygit_VERSION-BUILD_VERSION+DIST
-Architecture: amd64
+Architecture: ARCH
 Depends: 
 Description: a simple terminal UI for git commands.
 
