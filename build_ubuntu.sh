@@ -2,7 +2,7 @@
 lazygit_VERSION=$1
 BUILD_VERSION=$2
 
-declare -a distros=("jammy" "noble" "questing")
+declare -a distros=("jammy" "noble" "questing" "resolute")
 
 declare -A ARCH_TO_TARBALL=(
   ["amd64"]="linux_x86_64"
