@@ -1,0 +1,16 @@
+Source: lazygit
+Section: utils
+Priority: optional
+Maintainer: Dario Griffo <dariogriffo@gmail.com>
+Build-Depends: debhelper-compat (= 13), wget, ca-certificates
+Standards-Version: 4.6.2
+Homepage: https://github.com/jesseduffield/lazygit
+Rules-Requires-Root: no
+
+Package: lazygit
+Architecture: amd64 arm64 armel armhf i386
+Depends: ${misc:Depends}
+Description: A simple terminal UI for git commands
+ lazygit is a simple terminal UI for git commands, written in Go.
+ It provides a fast and easy way to work with git repositories
+ from the command line.

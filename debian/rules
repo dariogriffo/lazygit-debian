@@ -1,0 +1,36 @@
+#!/usr/bin/make -f
+DEB_HOST_ARCH ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
+LAZYGIT_VERSION := $(shell dpkg-parsechangelog -S Version | sed 's/[-~].*//')
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+
+override_dh_auto_build:
+	@arch="$(DEB_HOST_ARCH)"; \
+	case "$$arch" in \
+		amd64)  LAZYGIT_RELEASE="lazygit_$(LAZYGIT_VERSION)_Linux_x86_64" ;; \
+		arm64)  LAZYGIT_RELEASE="lazygit_$(LAZYGIT_VERSION)_Linux_arm64" ;; \
+		armel)  LAZYGIT_RELEASE="lazygit_$(LAZYGIT_VERSION)_Linux_armv6" ;; \
+		armhf)  LAZYGIT_RELEASE="lazygit_$(LAZYGIT_VERSION)_Linux_armv6" ;; \
+		i386)   LAZYGIT_RELEASE="lazygit_$(LAZYGIT_VERSION)_Linux_32-bit" ;; \
+		*) echo "Unsupported architecture: $$arch"; exit 1 ;; \
+	esac; \
+	echo "Downloading $$LAZYGIT_RELEASE for $(LAZYGIT_VERSION)..."; \
+	wget -q "https://github.com/jesseduffield/lazygit/releases/download/v$(LAZYGIT_VERSION)/$$LAZYGIT_RELEASE.tar.gz"; \
+	tar -xf "$$LAZYGIT_RELEASE.tar.gz" lazygit; \
+	rm -f "$$LAZYGIT_RELEASE.tar.gz"; \
+	echo "$$LAZYGIT_RELEASE" > .lazygit_release_name
+
+override_dh_auto_install:
+	@install -D -m 755 lazygit debian/lazygit/usr/bin/lazygit
+
+override_dh_auto_test:
+
+override_dh_auto_clean:
+	@rm -f lazygit .lazygit_release_name || true
+
+override_dh_strip:
+
+override_dh_shlibdeps:
