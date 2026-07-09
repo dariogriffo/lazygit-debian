@@ -21,7 +21,7 @@ for ARCH in "${!ARCH_TO_TARBALL[@]}"; do
   rm -f "${TARBALL}"
 
   for DEBIAN_DIST in "${distros[@]}"; do
-    FULL_VERSION="${lazygit_VERSION}-${BUILD_VERSION}+${DEBIAN_DIST}_${ARCH}"
+    FULL_VERSION="${lazygit_VERSION}-${BUILD_VERSION}~${DEBIAN_DIST}_${ARCH}"
 
     docker build . \
       -t lazygit-${DEBIAN_DIST}-${ARCH} \

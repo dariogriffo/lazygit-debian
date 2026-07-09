@@ -21,7 +21,7 @@ for ARCH in "${!ARCH_TO_TARBALL[@]}"; do
   rm -f "${TARBALL}"
 
   for UBUNTU_DIST in "${distros[@]}"; do
-    FULL_VERSION="${lazygit_VERSION}-${BUILD_VERSION}+${UBUNTU_DIST}_${ARCH}_ubu"
+    FULL_VERSION="${lazygit_VERSION}-${BUILD_VERSION}~${UBUNTU_DIST}_${ARCH}_ubu"
 
     docker build . -f Dockerfile.ubu \
       -t lazygit-ubuntu-${UBUNTU_DIST}-${ARCH} \
