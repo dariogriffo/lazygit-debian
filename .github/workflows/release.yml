@@ -23,6 +23,11 @@ jobs:
       - name: Checkout lazygit-debian
         uses: actions/checkout@v4
 
+      - name: Validate upstream license permits paid distribution
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: ./validate_license.sh ${{ inputs.lazygit_version }}
+
       - name: Build lazygit
         run: ./build.sh ${{ inputs.lazygit_version }} ${{ inputs.build_version }}
 
