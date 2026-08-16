@@ -19,10 +19,6 @@
 This repository contains build scripts to produce the _unofficial_ Debian packages
 (.deb) for [lazygit](https://github.com/jesseduffield/lazygit/) hosted at [deb.griffo.io](https://deb.griffo.io)
 
-<p align="center">
-⭐⭐⭐ Love using lazygit on Debian? Show your support by starring this repo or [subscribing](https://buy.stripe.com/aFa28q8hr0lRdlm4a2enS01) — from 1 October 2026, apt access requires a yearly subscription. ⭐⭐⭐
-</p>
-
 Currently supported debian distros are:
 - Bookworm
 - Trixie
