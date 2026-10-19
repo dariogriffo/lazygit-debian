@@ -1,4 +1,4 @@
-lazygit (FULL_VERSION) DIST; urgency=low
+lazygit (FULL_VERSION) stable; urgency=low
 
   - Custom commands submenus by @stefanhaller in #4324
   - Refactor migrations to only marshall yaml twice by @ChrisMcD1 in #4318
